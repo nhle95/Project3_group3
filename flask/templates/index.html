@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title> Covid-19 Blog Website</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/style.css') }}">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Mukta:wght@300;400;600;700;800&family=Noto+Sans:wght@400;700&display=swap">
+
+  <!-- vaccine location -->
+  <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/fontawesome.min.css" integrity="sha384-z4tVnCr80ZcL0iufVdGQSUzNvJsKjEtqYZjiQrrYKlpGow+btDHDfQWkFjoaz/Zr" crossorigin="anonymous">
+
+  <link 
+  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" 
+  rel="stylesheet"  type='text/css'>
+
+
+
+  <!-- css for react js -->
+   <style>
+      * {
+        margin: 0;
+        padding: 15px;
+        font-family: sans-serif;
+      }
+      /*.chartMenu {
+        width: 100vw;
+        height: 40px;
+        background: #1A1A1A;
+        color: rgba(255, 26, 104, 1);
+      }
+      .chartMenu p {
+        padding: 10px;
+        font-size: 20px;
+      }*/
+      /*.chartCard {
+        width: 100vw;
+        height: calc(100vh - 40px);
+        background: rgba(255, 26, 104, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }*/
+      .chartBox {
+        width: 100%;
+        padding: 20px;
+        border-radius: 20px;
+        border: solid 3px rgb(250,218,94);
+        background: white;
+        margin-top: 50px;
+      }
+
+      #myChart{
+        padding: 20px;
+      }
+      #legend > label{
+        padding: 5px;
+      }
+
+     /* vaccine find*/
+     .hero.hero-body.is-dark.container{
+      background-color:  rgb(250,218,94);
+      Color:  black;}
+
+     .field{
+      padding:  0px;
+     }
+
+     .message-header{
+      background: rgb(75, 192, 192) ;
+     }
+
+
+     /*vaccine map*/
+     .box{
+      position: relative;
+      width:  100%;
+      height: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: white;
+      margin: 35px;
+      border-width: 10px;
+      border-style:  solid;
+      border-color: rgb(250,218,94);
+     }
+
+
+     /*simualtion*/
+     .simulation_list{
+      width:  100%;
+     }
+
+     
+     
+     .simulation_list h4{
+      color:  black;
+      background:  rgb(250,218,94);
+      padding:  10px 20px;
+      font-size:  20px;
+      font-weight:  700;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px
+    }
+
+    .simulation_list h6
+    {
+      padding:  10px;
+    }
+    .simulation_list ul{
+      position: relative;
+      background: #fff;
+    }
+
+    .simulation_list ul li{
+      list-style = none;
+      padding:  10px;
+      width:  100%;
+      background:  #fff;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+      transition:  transform 0.5;
+    }
+
+    .simulation_list ul li:hover{
+      transform:  scale(1,1);
+      z-index:  100;
+      background: #FFFEE9;
+      box-shadow: : 0 5ox 25px rgba(0,0,0,0.1);
+    }
+
+    
+
+     }
+
+      
+
+    </style>
+
+
+
+</head>
+
+
+<body>
+  <header>
+    <a href="#" class="logo">Covid-19 Blog</a>
+    <div class = "menuToggle"></div>
+  </header>
+  
+  <ul class = "navigation">
+    <li><a href="file:///Users/xenialiu/Desktop/SMU_Data_Camp/Project/Project3/index2.html">Home</a></li>
+    <li><a href="dashboard">Covid-19 Tracker</a></li>
+    <li><a href="#">Explore</a></li>
+  </ul>
+
+<!-- banner -->
+  <section class = "banner" id = "home">
+    <img src="{{ url_for('static', filename = 'banner.jpg') }}" class = "cover">
+    <div class= "contentBx">
+      <h2>Covid-19 Information</h2>
+      <h4>Data Visualization Blog</h4>
+      <a href="\scrape" class = "btn">Scrape New Data</a>
+    </div>
+  </section>
+
+
+
+
+
+
+  <!-- treatment -->
+  <section class="about" id="about">
+    <div class="title">
+      <h2>{{covid19.trt_title}}</h2>
+    </div>
+    <div class = "contentBx" >
+      <div class = "content">
+        <ul>
+          {% for trt in covid19.treatment %}
+          <li>{{trt}}</li>
+          <br>
+          {% endfor %}
+        </ul>
+      </div>
+      <!-- treatment picture -->
+      <div class= "content">
+        <div class = "imgBx" >
+          <img src={{covid19.difference_graph}} style = "height:70%; width: 100%; top: 10%" class = "cover">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+    <!-- xray -->
+  <section class = "post" id="post">
+    <div class = "title">
+      <h2>{{covid19.lung_big_title}}</h2>
+    </div>
+
+    <div style = "position: relative;
+                  display: grid;
+                  grid-template-columns: 1fr 1fr 1fr ;
+                  grid-auto-flow: row;
+                  grid-gap: 20px;
+                  margin-top:  10px;
+                  height: 500px;">
+
+        <div class = "postBox" style = "position: relative;">
+          <div class = "imgBx">
+            <img src={{covid19.lung_photo1}} class = "cover">
+          </div>
+          
+          <div class = "textBx">
+            
+            <h3>{{covid19.lung_title2}}</h3>
+            <a href="#" class="btn" style = "padding: 4px 10px; font-weight:300; font-size: 1em">Read More</a>
+          </div>
+        </div>
+
+
+        <div class = "postBox" style = "position: relative;">
+          <div class = "imgBx">
+            <img src={{covid19.lung_photo2}} class = "cover">
+          </div>
+          
+          <div class = "textBx">
+            
+            <h3>{{covid19.lung_title2}}</h3>
+            <a href="#" class="btn" style = "padding: 4px 10px; font-weight:300; font-size: 1em">Read More</a>
+          </div>
+        </div>
+
+
+        <div class = "postBox" style = "position: relative;" >
+          <div class = "imgBx">
+            <img src={{covid19.lung_photo3}} class = "cover">
+          </div>
+
+          <div class = "textBx">
+            <h3>{{covid19.lung_title3}}</h6>
+            <a href="#" class="btn" style = "padding: 4px 10px; font-weight:300; font-size: 1em">Read More</a>
+          </div>
+        </div>
+
+       
+    </div>
+  </section>
+
+
+
+
+
+  <!-- table -->
+  <section  class= "vaccine" id="vaccine">
+    <div class="title">
+      <h2>{{covid19.vaccine_title}}</h2>
+    </div>
+
+    <div class = "tablecontent">
+      <table>
+        <thead>
+          <tr id = "header">
+            <th></th>
+            {% for head in covid19.dose_adminstered %}
+              <th>{{head}}</th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>US</b></td>
+            {% for us in covid19.us_dose_number %}
+              <td>{{us}}</td>
+            {% endfor %}
+          </tr>
+          <tr>
+            <td><b>Global</b></td>
+            {% for global in covid19.global_dose_number %}
+              <td>{{global}}</td>
+            {% endfor %}
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <!-- bar chart for js  -->
+    <div class="chartBox">
+      <div id="legend"></div>
+      <canvas id="myChart"></canvas>
+    </div>
+    <!-- </div> -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+    // setup 
+    const data = {
+      labels: ['TX', 'CA', 'NY', 'MA', 'FL', 'OR', 'IL'],
+      datasets: [{
+        label: 'Dose1 Perc',
+        data: [75.1, 85.2, 93.2, 100, 81.6, 80.4, 78.4],
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor:'rgb(255, 99, 132)',
+        borderWidth: 1
+      },
+      {
+        label: 'Dose2 Perc',
+        data: [59.4, 71.6, 75.7, 79.8, 64.3, 68.2, 68],
+        backgroundColor:'rgba(75, 192, 192, 0.2)',
+        borderColor:'rgb(75, 192, 192)',
+        borderWidth: 1
+      },
+      {
+        label: 'Dose Per 100',
+        data: [169.51, 209.94, 221.78, 246.02, 189.43, 207.93,201.15],
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor:'rgb(54, 162, 235)',
+        borderWidth: 1
+      }]
+    };
+
+    // config 
+    const config = {
+      type: 'bar',
+      data,
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        },
+        layout:{
+          padding:0
+        }
+      }
+    };
+
+    // render init block
+    const myChart = new Chart(
+      document.getElementById('myChart'),
+      config
+    );
+
+
+    checkbox();
+
+    function checkbox(){
+      const legend = document.getElementById('legend')
+      myChart.data.datasets.forEach((dataset,index) => {
+        console.log(dataset)
+
+        // add checkbox input type="checkbox"
+        let checkbox = document.createElement('input')
+        checkbox.type = "checkbox";
+        checkbox.name = dataset.label;
+        checkbox.value = index;
+        checkbox.id = `dataset${index}`;
+        checkbox.checked = true;
+
+        //add textnode
+        let label = document.createElement('label');
+        label.htmlFor = `dataset${index}`;
+
+        // add textnode
+        let labelText = document.createTextNode(dataset.label);
+
+        label.appendChild(labelText);
+        legend.appendChild(checkbox);
+        legend.appendChild(label);
+      }); 
+    };
+
+    function checkboxEffect(chart,element){
+      const index = element.target.value;
+      if(chart.isDatasetVisible(index)){
+        chart.hide(index);
+      }else{
+        chart.show(index);
+      }
+    };
+
+    const dataset0 = document.getElementById('dataset0');
+    const dataset1 = document.getElementById('dataset1');
+    const dataset2 = document.getElementById('dataset2');
+    
+    dataset0.addEventListener('change',(e) => {
+      checkboxEffect(myChart, e)
+    });
+
+    dataset1.addEventListener('change',(e) => {
+      checkboxEffect(myChart, e)
+    });
+
+    dataset2.addEventListener('change',(e) => {
+      checkboxEffect(myChart, e)
+    });
+
+
+    </script>
+    
+  </section>
+
+
+
+
+  
+
+
+
+  <!-- search vaccine location  -->
+
+  <section class="location" id="location">
+    <div class="title">
+      <h2>US Vaccine Location</h2>
+    </div>
+    <div class = "contentBx" >
+      <div class = "content">
+        <div class="hero hero-body is-dark container">
+       <!--  <h1 class="title" style = "color:black;">US Vaccine Location Info</h1> -->
+        <h2 class="subtitle" style = "color:black;">Enter a zipcode to get the vaccine location information</h2><form id="zipForm">
+          <div class="field">
+            <div class="control has-icons-left has-icons-right">
+              <input class="input zip is-large" type="text" placeholder="Enter Zipcode">
+              <span class="icon is-small is-left">
+            <!-- <i class="fa fa-map-pin" aria-hidden="true"></i> -->
+              </span>
+              <span class="icon is-small is-right icon-check" style="display: none;">
+                <i class="fa fa-check"></i>
+              </span>
+              <span class="icon is-small is-right icon-remove" style="display: none;">
+                <i class="fa fa-remove"></i>
+              </span>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    <br>
+    <div class="container">
+      <div id="output"></div>
+    </div>
+
+       
+     
+  </section>
+
+  <script type="text/javascript">
+      // Listen for submit
+    document.querySelector("#zipForm").addEventListener("submit", getLocationInfo);
+    function getLocationInfo(e){
+      //get zip value from input
+      const zip = document.querySelector(".zip").value;
+
+      //make request
+      fetch(`https://data.cdc.gov/resource/5jp2-pgaw.json`)
+      .then(response => response.json())
+      .then(data => {
+        found_location = false
+        let result = []
+        for (let i = 0; i<data.length; i++){
+          // console.log(zip == data[i].loc_admin_zip)
+          
+          if (zip == data[i].loc_admin_zip){
+            found_location = true
+            result.push(data[i])
+            // console.log(result.loc_admin_city)
+            // console.log(result)
+
+          // don't touch here  if condition bracket
+          } 
+        
+          // don't touch here for loop (i) bracket
+        }   
+
+        if (!found_location){
+            document.querySelector("#output").innerHTML = `
+                <article class="message is-danger">
+                <div class="message-body">Invalid Zipcode, please try again</div></article>
+              `;
+        } else {
+
+            // Show location info
+            let output2 = []
+            let output = '';
+            for (let j = 0; j<result.length; j++){
+              console.log(result[j].loc_admin_zip)
+              output += `
+                    <article class="message is-primary">
+                      <div class="message-header">
+                        <p>Medicine Info</p>
+                        <button class="delete"></button>
+                      </div>
+                      <div class="message-body">
+                        <ul>
+                          <li><strong>City: </strong>${result[j]["loc_admin_city"]}</li>
+                          <li><strong>State: </strong>${result[j]["loc_admin_state"]}</li>
+                          <li><strong>Street Name: </strong>${result[j]["loc_admin_street1"]}</li>
+                          <li><strong>Phone Number: </strong>${result[j]["loc_phone"]}</li>
+                          <li><strong>Medicine Name: </strong>${result[j]["med_name"]}</li>
+                        </ul>
+                      </div>
+                    </article>
+                  `;
+                output2.push(output)
+            } // don't touch here for loop (j) bracket
+            console.log(output)
+            console.log(typeof(output2))
+            
+            // Insert into output div
+            for(let k = 0; k<output2.length; k++){
+              // console.log(output2)
+              document.querySelector("#output").innerHTML = output2[k]
+            };
+        }
+      });
+      e.preventDefault()
+    }
+    
+  </script>
+
+
+
+
+
+
+    <!-- leaflet map plot -->
+    <section class="map" id="map">
+    <div class="title">
+      <h2>Routing Machine - Vaccine</h2>
+      
+      <a href="http://localhost:3000/">Map Here</a>
+      <iframe src="https://giphy.com/embed/vkaYjhpaMOzpXgV2D3" width="500" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/IntoAction-muscles-covid-vaccine-proudly-vaccinated-vkaYjhpaMOzpXgV2D3"></a></p>
+    <!-- <div class = "box">
+      <div id = "root" class = hero>
+
+      
+      </div>
+    </div> -->
+    
+  </section>
+
+
+
+
+  <!-- simulation -->
+  <section class="about" id="about">
+    <div class="title">
+      <h2>Simulating COVID-19</h2>
+    </div>
+    
+
+    <div class = "contentBx" >
+      <div class = "simulation_list">
+        <h4>Parameter Assumption</h4>
+        <h6>Susceptible Inferections Recovered Model (SIR)</h6>
+        <ul>
+          <li><span ><b>ro = 2.28</b></span> <br> measure of contagiousness of disease (expected number to spread per person)</li>
+          <li><span ><b>incubation = 5</b></span> <br> average time of incubation</li>
+          <li><span ><b>percent_mild = 0.8</b></span>  <br> what percentage of symptoms are mild</li>
+          <li><span ><b>percent_severe = 0.2</b></span> <br> what percentage of symptoms are severe</li>
+          <li><span ><b>severe_death = (14,56)</b></span> <br> if people die, how quickly will they die (two cases: fast and slow)</li>
+          <li><span ><b>fatality_rate = 0.034</b></span> <br> what percentage of severe symptoms die</li>
+          <li><span ><b>serial_interval = 7</b></span> <br> average time between successive cases</li>
+        </ul>
+      </div>
+      <!-- treatment picture -->
+      <!-- <div class= "content"> -->
+        <div class = "videoBx" >
+          <video controls="controls" width=800px height="500" name="Video Name">
+            <source src="{{ url_for('static', filename = 'video.mov') }}">
+          </video>
+        </div>
+      <!-- </div> -->
+    </div>
+  </section>
+
+
+
+
+<script type="text/javascript">
+    const menuToggle = document.querySelector('.menuToggle');
+    const navigation = document.querySelector('.navigation');
+    menuToggle.onclick = function(){
+      menuToggle.classList.toggle('active');
+      navigation.classList.toggle('active');
+    }
+
+    window.addEventListener('scroll',function(){
+      const header = document.querySelector('header');
+      header.classList.toggle('sticky', window.scrollY>0);
+    })
+</script>
+  
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+
+
+      
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Explore Vaccine</title>
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel ="stylesheet">
+  <link rel="stylesheet" href="style2.css">
+  <link rel="stylesheet" type="text/css" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+
+<!-- <script language="JavaScript" type="text/javascript" src="/js/jquery-1.2.6.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="/js/jquery-ui-personalized-1.5.2.packed.js"></script>
+<script language="JavaScript" type="text/javascript" src="/js/sprinkle.js"></script
+ -->
+
+<style type="text/css">
+   body{
+    background-image: url("3.jpeg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position:center;
+    background-size: cover;
+   }
+ </style>
+
+</head>
+
+
+
+
+
+
+<body>
+  <div class = "main-container d-flex">
+    <div class = "sidebar" id ="side_nav">
+      <div class = "header-box px-2 pt-3 pd-4 d-flex justify-content-between">
+        <h1 class = "fs-4"><span class = "bg-white text-dark rounded shadow px-2 me-2">Team 3</span> <span class = "text-white">COVID-19</span></h1>
+        <button class = "btn d-md-none d-block close-btn px-1 py-0 text-white"><i class="far fa-stream"></i></button>
+      </div>
+<br><br>
+      <ul class = "list-unstyled px-2">
+      <li class = "active"><a href="introExplore.html" class = "text-decoration-none px-3 py-2 d-block"><i class="fad fa-sun"></i>Introduction</a></li>
+      <br><br>
+      <li class = ""><a href="dashExplore.html" class = "text-decoration-none px-3 py-2 d-block"><i class="fas fa-moon"></i>COVID Tracker Dashboard</a></li>
+      <br><br>
+<!--       <li class = ""><a href="#" class = "text-decoration-none px-3 py-2 d-block d-flex justify-content-between">
+        <span><i class="fas fa-stars"></i> Messages</a></span>
+        <span class = "bg-dark rounded-pill text-white py-0 px-2">02</span>
+      </li>
+ -->      <li class = ""><a href="vaxExplore.html" class = "text-decoration-none px-3 py-2 d-block"><i class="fas fa-flower"></i>Vaccine, Blog, Flask</a></li>
+ <br><br>
+      <li class = ""><a href="conclusionExplore.html" class = "text-decoration-none px-3 py-2 d-block"><i class="fas fa-star"></i>Conclusion</a></li>
+    </ul>
+<!--     <hr class = "h-color mx-2">
+
+    <ul class = "list-unstyled px-2">
+      <li class = ""><a href="#" class = "text-decoration-none px-3 py-2 d-block"><i class="fas fa-stars"></i>Setting</a></li>
+      <li class = ""><a href="#" class = "text-decoration-none px-3 py-2 d-block"><i class="fas fa-stars"></i>Notifications</a></li>
+      
+    </ul>
+ -->    </div>
+
+
+
+
+
+    <div class = "content">
+      <nav class="navbar navbar-expand-md navbar-light bg-light">
+  <div class="container-fluid">
+    <div class = "d-flex justify-content-between d-md-none d-block">
+            <button class = "btn px-1 py-0 open-btn me-2"><i class="fad fa-stream"></i></button>
+
+      <a class="navbar-brand fs-4" href="#"><span class = "bg-dark rounded px-2 py-0 text-white">Team 3</span></a>
+    </div>
+    
+    <button class="navbar-toggler p-0 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <!-- <span class="navbar-toggler-icon"></span> -->
+      <i class="fal fa-list"></i>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <ul class="navbar-nav  mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="file:///Users/xenialiu/Desktop/SMU_Data_Camp/Project/Project3/index2.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="file:///Users/xenialiu/Desktop/SMU_Data_Camp/Project/Project3/dashboard/index.html">Tracker</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5000/">Blog</a>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+      
+  <br>
+  <br>
+  <br>
+
+    <section class  = "dashboard-content px-3 pt-4" id = "Dashboard-id">
+      <h2 style = "text-align: center;"> Vaccines</h2>
+      <div style = "padding:40px">
+        <h5>Dashboard</h5>
+        <ul>
+          <li>How many people were vaccinated?</li>
+            <ul>
+              <li>Could not map data to how many were vaccinated around the world, but created a search engine for finding nearest vaccine clinic using Flask  on the  Blog instead.</li>
+            </ul>
+        </ul>
+
+        <br>
+
+        <h5>Flask/Blog</h5>
+
+         <p>We started with the web scraping of 4 different websites. This data was mainly about US data. The US shows a greater pride in wanting to take the shot. As we can see from the data, we see that the US was the most active about getting people the vaccine.</p>
+        
+  
+        <ul>
+          <li><b>URL for the Covid Vaccine Location</b></li>
+
+            <ul>
+             <li>They can use this location tracker to find the location of a vaccine site. </li>
+             <li>With this app we can get specific gps location of the vaccine center. We can also see ( Reactleaflet.js) </li>
+            <li>Will show which vaccine manufacturer is being used</li>
+            </ul>
+
+        <br>
+          <li><b>Visual Plot of Vaccine Data</b></li>
+            <ul>
+              <li>Bar graph (bing.com Url showing US vs the world on Vaccine stats)</li>
+              <li>The US shows a higher number of shots taken in the Unite States and the world. This could be due to the vaccine being created and administered in the United States. So, we see a higher dosage  for the first dose and for the second dose US also has a higher percentage, but the Global numbers for the second shot was within 2% of the United States. </li>
+             <li>We used Chart js. </li>
+            </ul>
+
+          <br>
+          <li><b>Covid Vaccine Data Graphs</b></li>
+
+            <ul>
+              <li>We decided to look at 7 states to show the percentage by state.</li>
+            </ul>
+      </div>
+      <hr>
+      <br>
+      <h2 style = "text-align: center;"> Long Term Covid Affects </h2>
+      <div style = "padding:25px">
+        <h5>Flask/Blog</h5>
+        <ul>
+          <li><b>How can we protect ourself? Can we distinguish from flu or other common cold?</b></li>
+            <ul>
+              <li>Covid Prevention Techniques (Used _veryweallhealth.com & mayoclinic.org/diseases Url to give tips on how to slow the spread)</li>
+
+              <li>We think this information is useful to be able to slow down the spread of Covid. These are just some quick tips as well as things to look for to distinguish between covid or the flu</li>
+            </ul>
+        </ul>
+        <br>
+        <ul>
+          <li><b>What is the effect of our lungs after covid?</b></li>
+          <ul>
+            <li>X rays of the lungs (Used boredpanda.com/post-covid-lung-covid to provide information on how we have seen in real time the effects of  covid. The first picture shows us a patient with clear lungs as 2nd picture shows a smoker's lungs. As we go to the 3rd image, we see the effects of covid in the human lungs. </li>
+            <li>We can see the difference and in the smokers' lungs and covid lungs. The question we wonder is how will this affect us as a whole in the future. </li>
+          </ul>
+        </ul>
+      </div>
+
+      <hr>
+      <br>
+      <h2 style = "text-align: center;"> Explain Covid Trends </h2>
+      <div style = "padding:25px">
+        <h5>Flask/Blog</h5>
+        <ul>
+          <li><b>How can we explain the spread of Covid? (Use of Simulator)?</b></li>
+          <ul>
+          <li>Simulating COVID-19 used a visual to show a short time laps with a model of the spread of Covid-19.</li>
+          <ul>
+            <li>The day counts up showing how the virus could spread and affect. Over time we see those that were shown in red as infected most of them show up green as  recovered. </li>
+            <li>This was a graphic that was shown in the Washington post to highlight the affect of different diseases that have affected the US. Seeing as we could also use this to visualize how covid-19 has affect a certain area we thought it could be a cool real time visual to track covid?   We utilized used python to plot. ( Tried to use MP4, tried to put animations)</li>
+          </ul>
+        </ul>
+        </ul>
+        
+        
+
+    </section>
+
+
+  </div>
+</div>
+<!-- end main-container d-flex -->
+
+    <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    <script>
+      $(".sidebar ul li").on('click',function(){
+        $(".sidebar ul li.active").removeClass('active');
+        $(this).addClass('active');
+        });
+
+     
+           $('.open-btn').on('click',function(){
+          $('.sidebar').addClass('active');
+          });
+
+           $('.close-btn').on('click',function(){
+          $('.sidebar').removeClass('active');
+          });
+
+
+    </script>
+       
+
+  
+  <!-- <div class = "content">
+        <h1>COVID-19</h1>
+        <div class="container">
+            <div class="d-flex">
+              <div class="p-2 w-100">
+            <div class="jumbotron">
+              <h2 class="display-4">Project Summary</h2>
+              <hr class="my-4">
+              <p>We are creating the webpage that displayed covid-data from multiple sources. The main page contains the tracker, dashboard, map, and contact us. Our webpage provides the number of covid-confirmed and death for each country. We also provide the story of the coronavirus and how to protect ourself from the covid. At the end, we are using leaflet to create a heat map to better visualize the volume of locations/events within a dataset.
+                
+              </p>
+                <br><br><br><br>
+                
+                <h4 align="left"><b><u>Datasets to be used:</u></b></h4>
+                <p align="left">
+                https://www.verywellhealth.com/coronavirus-flu-differences-4798752 <br>
+                https://www.mayoclinic.org/diseases-conditions/coronavirus/in-depth/coronavirus-myths/art-20485720<br>
+                https://www.boredpanda.com/post-covid-lungs-coronavirus-brittany-kendall/?utm_source=bing&utm_medium=organic&utm_campaign=organic<br>
+                https://www.bing.com/search?q=covid%20vaccine%20data&qs=ds&form=QBRE<br>
+                https://api.covid19api.com/dayone/country/%7Bname%7D<br>
+                https://data.cdc.gov/resource/5jp2-pgaw.json
+                </br></p>
+            </div>
+    
+          </div>
+          </main></div>
+ -->
+
+
+
+
+    
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+
+
+</body>
+
+</html>

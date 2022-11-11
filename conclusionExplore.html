@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Explore</title>
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel ="stylesheet">
+  <link rel="stylesheet" href="style2.css">
+  <link rel="stylesheet" type="text/css" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+
+<!-- <script language="JavaScript" type="text/javascript" src="/js/jquery-1.2.6.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="/js/jquery-ui-personalized-1.5.2.packed.js"></script>
+<script language="JavaScript" type="text/javascript" src="/js/sprinkle.js"></script>
+
+
+ -->
+
+ <style type="text/css">
+   body{
+    background-image: url("9.jpeg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position:center;
+    background-size: cover;
+   }
+ </style>
+
+
+</head>
+
+
+
+
+
+
+<body>
+  <div class = "main-container d-flex">
+    <div class = "sidebar" id ="side_nav">
+      <div class = "header-box px-2 pt-3 pd-4 d-flex justify-content-between">
+        <h1 class = "fs-4"><span class = "bg-white text-dark rounded shadow px-2 me-2">Team 3</span> <span class = "text-white">COVID-19</span></h1>
+        <button class = "btn d-md-none d-block close-btn px-1 py-0 text-white"><i class="far fa-stream"></i></button>
+      </div>
+<br><br>
+      <ul class = "list-unstyled px-2">
+      <li class = "active"><a href="introExplore.html" class = "text-decoration-none px-3 py-2 d-block"><i class="fad fa-sun"></i>Introduction</a></li>
+      <br><br>
+      <li class = ""><a href="dashExplore.html" class = "text-decoration-none px-3 py-2 d-block"><i class="fas fa-moon"></i>COVID Tracker Dashboard</a></li>
+      <br><br>
+<!--       <li class = ""><a href="#" class = "text-decoration-none px-3 py-2 d-block d-flex justify-content-between">
+        <span><i class="fas fa-stars"></i> Messages</a></span>
+        <span class = "bg-dark rounded-pill text-white py-0 px-2">02</span>
+      </li>
+ -->      <li class = ""><a href="vaxExplore.html" class = "text-decoration-none px-3 py-2 d-block"><i class="fas fa-flower"></i>Vaccine, Blog, Flask</a></li>
+ <br><br>
+      <li class = ""><a href="conclusionExplore.html" class = "text-decoration-none px-3 py-2 d-block"><i class="fas fa-star"></i>Conclusion</a></li>
+    </ul>
+<!--     <hr class = "h-color mx-2">
+
+    <ul class = "list-unstyled px-2">
+      <li class = ""><a href="#" class = "text-decoration-none px-3 py-2 d-block"><i class="fas fa-stars"></i>Setting</a></li>
+      <li class = ""><a href="#" class = "text-decoration-none px-3 py-2 d-block"><i class="fas fa-stars"></i>Notifications</a></li>
+      
+    </ul>
+ -->    </div>
+
+
+
+
+
+    <div class = "content">
+      <nav class="navbar navbar-expand-md navbar-light bg-light">
+  <div class="container-fluid">
+    <div class = "d-flex justify-content-between d-md-none d-block">
+            <button class = "btn px-1 py-0 open-btn me-2"><i class="fad fa-stream"></i></button>
+
+      <a class="navbar-brand fs-4" href="#"><span class = "bg-dark rounded px-2 py-0 text-white">Team 3</span></a>
+    </div>
+    
+    <button class="navbar-toggler p-0 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <!-- <span class="navbar-toggler-icon"></span> -->
+      <i class="fal fa-list"></i>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <ul class="navbar-nav  mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="file:///Users/xenialiu/Desktop/SMU_Data_Camp/Project/Project3/index2.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="file:///Users/xenialiu/Desktop/SMU_Data_Camp/Project/Project3/dashboard/index.html">Tracker</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5000/">Blog</a>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+      
+
+    <section class  = "dashboard-content px-3 pt-4" id = "Dashboard-id">
+      <div style = "padding:40px">
+        <h2 style = "text-align: center;"> Conclusion</h2>
+        <h4><b>Summary</b></h4>
+        <p><i><b>Is Covid-19 Over?</b></i></p>
+        <ul>
+          <li><b>Yes or No?</b></li>
+            <ul>
+              <li>Internationally</li>
+              <li>US</li>
+            </ul>
+              <br>
+              <li><b>Did the protective measures affect covid cases and/or deaths?</b> </li>
+            <ul>
+              <li>Vaccines</li>
+            </ul>
+            <br>
+              <li><b>Is there enough data to confirm the answers?</b></li>
+            <ul>
+              <li>Simulator & Predicting trends?</li>
+            </ul>
+
+      </div>
+
+      <hr>
+      <br>
+      <div  style = "padding:40px">
+        <h4><b>The Data Frames</b></h4>
+        <ul>
+          <li><b>We utilized Pymongo to create and store databases.</b></li>
+          <br>
+          <li><b>We have three databases:</b>
+            <ul>
+              <li>Vaccine Dose DB</li>
+              <li>Web Scrapping Databases</li>
+              <li>Country cases</li>
+            </ul>
+            <br>
+          <li><b>1 csv data file cased Dose CSV</b></li>
+          <br>
+          <li><b>Urls:</b>
+            <ul>
+                <li>2 API urls - https://api.covid19api.com/summary & https://covid19.mathdro.id/api</li>
+                <li>https://api.covid19api.com/dayone/country</li>
+                <li>https://data.cdc.gov/resource/5jp2-pgaw.json</li>
+            </ul>
+      </div>
+
+      <hr>
+      <br>
+
+      <div style = "padding:40px">
+        <h4><b>Improvements</b></h4>
+        <ul>
+          <li>We could have made things better but being able to set a timeline to choose to view data un a daily, weekly, and monthly data. We also could have shown a vaccination map for the globe, and not just the United states. </li>
+          <br>
+         <li>We wanted to look at the recovered data from the patients, but that was hard to find the, because it isn’t being tacked at this time. It was tracked during the height of the pandemic. </li>
+         <br>
+          <li>Trying to find Gender/Age if we had a little more time. To see if gender played a role.</li>
+          <br>
+          <li>US vaccine tracker has some issues with certain states. Don’t have a lot of data about vaccines in other countries.(It was hard to find this data as well) </li>
+          <br>
+          <li>Url data for the tracker was a tad slow for our liking, but it did work, would have liked to had be a faster response time for our data displays. </li>
+          <br>
+          <li>6 gs plt and 1 python plot. 1 leafleat, 2 chart. Js , Plotly plot .</li>
+          <br>
+          <li>For this project we used Py Mongo as the database. The project was powered by Python Flask API, as well as well as HTML/CSS,  Flask, Leafly,  Py Mongo database. Javascript Chart js and React js. Were the two java scripts that we didn’t cover in class. </li>
+          <br>
+        </ul>
+      </div>
+      
+      
+
+
+    </section>
+
+  </div>
+</div>
+<!-- end main-container d-flex -->
+
+    <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    <script>
+      $(".sidebar ul li").on('click',function(){
+        $(".sidebar ul li.active").removeClass('active');
+        $(this).addClass('active');
+        });
+
+     
+           $('.open-btn').on('click',function(){
+          $('.sidebar').addClass('active');
+          });
+
+           $('.close-btn').on('click',function(){
+          $('.sidebar').removeClass('active');
+          });
+
+
+    </script>
+       
+
+  
+  <!-- <div class = "content">
+        <h1>COVID-19</h1>
+        <div class="container">
+            <div class="d-flex">
+              <div class="p-2 w-100">
+            <div class="jumbotron">
+              <h2 class="display-4">Project Summary</h2>
+              <hr class="my-4">
+              <p>We are creating the webpage that displayed covid-data from multiple sources. The main page contains the tracker, dashboard, map, and contact us. Our webpage provides the number of covid-confirmed and death for each country. We also provide the story of the coronavirus and how to protect ourself from the covid. At the end, we are using leaflet to create a heat map to better visualize the volume of locations/events within a dataset.
+                
+              </p>
+                <br><br><br><br>
+                
+                <h4 align="left"><b><u>Datasets to be used:</u></b></h4>
+                <p align="left">
+                https://www.verywellhealth.com/coronavirus-flu-differences-4798752 <br>
+                https://www.mayoclinic.org/diseases-conditions/coronavirus/in-depth/coronavirus-myths/art-20485720<br>
+                https://www.boredpanda.com/post-covid-lungs-coronavirus-brittany-kendall/?utm_source=bing&utm_medium=organic&utm_campaign=organic<br>
+                https://www.bing.com/search?q=covid%20vaccine%20data&qs=ds&form=QBRE<br>
+                https://api.covid19api.com/dayone/country/%7Bname%7D<br>
+                https://data.cdc.gov/resource/5jp2-pgaw.json
+                </br></p>
+            </div>
+    
+          </div>
+          </main></div>
+ -->
+
+
+
+
+    
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content = "ie=edge">
+  <title>
+    Vaccine Location Finder
+  </title>
+
+  <!-- <style type="text/css">
+    .icon-remove,.icon-check {display: none;}
+  </style> -->
+
+  <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+  <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/fontawesome.min.css" integrity="sha384-z4tVnCr80ZcL0iufVdGQSUzNvJsKjEtqYZjiQrrYKlpGow+btDHDfQWkFjoaz/Zr" crossorigin="anonymous">
+
+  <link 
+  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" 
+  rel="stylesheet"  type='text/css'>
+</head>
+
+<body>
+  <section class="hero hero-body is-dark container">
+  <h1 class="title">US Vaccine Location Info</h1>
+  <h2 class="subtitle">Enter a zipcode to get the vaccine location info</h2> 
+  <form id="zipForm">
+    <div class="field">
+      <div class="control has-icons-left has-icons-right">
+        <input class="input zip is-large" type="text" placeholder="Enter Zipcode">
+        <span class="icon is-small is-left">
+            <!-- <i class="fa fa-map-pin" aria-hidden="true"></i> -->
+          </span>
+        <span class="icon is-small is-right icon-check" style="display: none;">
+            <i class="fa fa-check"></i>
+          </span>
+        <span class="icon is-small is-right icon-remove" style="display: none;">
+            <i class="fa fa-remove"></i>
+          </span>
+      </div>
+    </div>
+  </form>
+  </section>
+
+<br>
+<div class="container">
+  <div id="output"></div>
+</div>
+
+<script type="text/javascript">
+    // Listen for submit
+  document.querySelector("#zipForm").addEventListener("submit", getLocationInfo);
+  function getLocationInfo(e){
+    //get zip value from input
+    const zip = document.querySelector(".zip").value;
+
+    //make request
+    fetch(`https://data.cdc.gov/resource/5jp2-pgaw.json`)
+    .then(response => response.json())
+    .then(data => {
+      found_location = false
+      let result = []
+      for (let i = 0; i<data.length; i++){
+        // console.log(zip == data[i].loc_admin_zip)
+        
+        if (zip == data[i].loc_admin_zip){
+          found_location = true
+          result.push(data[i])
+          // console.log(result.loc_admin_city)
+          // console.log(result)
+
+        // don't touch here  if condition bracket
+        } 
+        
+        
+  
+      
+        // don't touch here for loop (i) bracket
+      }   
+
+      if (!found_location){
+          document.querySelector("#output").innerHTML = `
+              <article class="message is-danger">
+              <div class="message-body">Invalid Zipcode, please try again</div></article>
+            `;
+      } else {
+
+          // Show location info
+          let output2 = []
+          let output = '';
+          for (let j = 0; j<result.length; j++){
+            console.log(result[j].loc_admin_zip)
+            output += `
+                  <article class="message is-primary">
+                    <div class="message-header">
+                      <p>Medicine Info</p>
+                      <button class="delete"></button>
+                    </div>
+                    <div class="message-body">
+                      <ul>
+                        <li><strong>City: </strong>${result[j]["loc_admin_city"]}</li>
+                        <li><strong>State: </strong>${result[j]["loc_admin_state"]}</li>
+                        <li><strong>Street Name: </strong>${result[j]["loc_admin_street1"]}</li>
+                        <li><strong>Phone Number: </strong>${result[j]["loc_phone"]}</li>
+                        <li><strong>Medicine Name: </strong>${result[j]["med_name"]}</li>
+                      </ul>
+                    </div>
+                  </article>
+                `;
+              output2.push(output)
+          } // don't touch here for loop (j) bracket
+          console.log(output)
+          console.log(typeof(output2))
+          
+          // Insert into output div
+          for(let k = 0; k<output2.length; k++){
+            // console.log(output2)
+            document.querySelector("#output").innerHTML = output2[k]
+          }
+          ;
+
+
+
+      }
+
+
+    });
+    e.preventDefault()
+  }
+  
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
